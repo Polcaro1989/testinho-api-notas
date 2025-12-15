@@ -1,4 +1,4 @@
-# API de Solicitacoes de Notas Fiscais
+# API de Solicitações de Notas Fiscais
 
 API HTTP em Node.js/TypeScript (Express) para criar, listar, buscar, emitir e cancelar solicitacoes de Nota Fiscal. Persistencia em SQLite (arquivo) sem precisar de servidor de banco externo.
 
@@ -6,12 +6,12 @@ API HTTP em Node.js/TypeScript (Express) para criar, listar, buscar, emitir e ca
 - Node.js >= 20
 - npm
 
-## Instalacao
+## Instalação
 ```bash
 npm install
 ```
 
-## Execucao
+## Execução
 - Desenvolvimento (hot reload): `npm run dev`
 - Producao: `npm run build && npm start`
 - Porta padrao: `3000` (ajuste `PORT` se quiser)
@@ -55,7 +55,7 @@ Base URL: `http://localhost:3000`
 - `POST /invoices/:id/cancel`  
   Cancela solicitacoes pendentes. Nao permite cancelar emitidas.
 
-### Exemplos com curl (copiaveis)
+### Exemplos com curl (copiáveis)
 - Criar:
 ```bash
 curl -X POST http://localhost:3000/invoices -H "Content-Type: application/json" -d "{\"cnpj\":\"12345678901234\",\"municipio\":\"Sao Paulo\",\"estado\":\"SP\",\"valorServico\":1000,\"dataDesejadaEmissao\":\"2025-12-31T10:00:00.000Z\",\"descricaoServico\":\"Servico de consultoria\"}"
@@ -93,7 +93,7 @@ curl -X POST http://localhost:3000/invoices/{id}/cancel
   - Emitir: 200 com `numeroNF`/`dataEmissao`/status `EMITIDA`, ou 400/401/500 conforme resposta externa; 400 se tentar emitir cancelada/ja emitida
   - Cancelar: 200 se pendente, 400 se emitida ou ja cancelada, 404 se id nao existir
 
-## Variaveis de ambiente
+## Variáveis de ambiente
 - `PORT`: porta do servidor (padrao 3000).
 - `INVOICE_DB_PATH`: caminho do arquivo SQLite (padrao `./data/invoices.db` em relação ao cwd).
 
